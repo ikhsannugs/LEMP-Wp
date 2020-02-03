@@ -23,8 +23,8 @@ cp -a /wordpress /var/www/
 #configure enginx
 chown -R www-data:www-data /var/www/wordpress
 rm -f /etc/nginx/sites-available/default
-rm -f /etc/nginx/sites-enable/default
+rm -f /etc/nginx/sites-enabled/default
 cp /LEMP-Wp-master/wordpress.conf /etc/nginx/sites-available
 ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/
 sudo systemctl restart php7.2-fpm
-sudo systemctl restart nginx.services
+sudo systemctl restart nginx.service
