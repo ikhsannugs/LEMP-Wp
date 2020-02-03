@@ -1,0 +1,9 @@
+Include database
+
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install unzip
+wget https://codeload.github.com/ikhsannugs/LEMP-Wp/zip/master
+sudo unzip /master
+sudo chmod 500 /LEMP-wp-master/webserver.sh
+/bin/bash /LEMP-Wp-master/webserver.sh
