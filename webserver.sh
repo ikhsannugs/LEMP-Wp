@@ -17,7 +17,9 @@ sed -i 's/username_here/admin/g' /wordpress/wp-config.php
 sed -i 's/password_here/1234567890/g' /wordpress/wp-config.php
 sed -i '38a\define('FS_METHOD', 'direct');' /wordpress/wp-config.php
 sed -i 's/\r$//g' /wordpress/wp-config.php
-sudo cp -a /wordpress /var/www/
-sudo rm -f /etc/nginx/sites-available/default
-sudo rm -f /etc/nginx/sites-enable/default
+cp -a /wordpress /var/www/
+chown -R www-data:www-data /var/www/wordpress
+rm -f /etc/nginx/sites-available/default
+rm -f /etc/nginx/sites-enable/default
+sudo 
 
