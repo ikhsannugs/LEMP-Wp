@@ -7,9 +7,9 @@ sudo apt-get install -y php-curl php-gd php-intl php-mbstring php-soap php-xml p
 curl -LO https://wordpress.org/latest.tar.gz
 sudo tar xzvf /latest.tar.gz
 curl -s https://api.wordpress.org/secret-key/1.1/salt/ > /auth.txt
-sudo chown ubuntu:ubuntu /wordpress /auth
+sudo chown ubuntu:ubuntu /wordpress/ /auth.txt
 cp /wordpress/wp-config-sample.php /wordpress/wp-config.php
 sed '49,56d' /wordpress/wp-config.php
-sed '48r' auth.txt' /wordpress/wp-config.php
+sed '48r auth.txt' /wordpress/wp-config.php
 
        
