@@ -19,13 +19,18 @@ sed -i 's/password_here/1234567890/g' /wordpress/wp-config.php
 sed -i '38a\define('FS_METHOD', 'direct');' /wordpress/wp-config.php
 sed -i 's/\r$//g' /wordpress/wp-config.php
 cp -a /wordpress /var/www/
-
-#configure enginx
 chown -R www-data:www-data /var/www/wordpress
+
+#configure nginx
 rm -f /etc/nginx/sites-available/default
-rm -f /etc/nginx/sites-enable/default
+rm -f /etc/nginx/sites-enabled/default
 cp /LEMP-Wp-master/wordpress.conf /etc/nginx/sites-available
 ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/
 sudo systemctl restart php7.2-fpm
-sudo systemctl restart nginx.services
+sudo systemctl restart nginx.service
 
+#configure mysql
+mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY '1234567890';"
+mysql -u root -e "CREATE DATABASE wordpressdb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -u root -e "GRANT ALL ON wordpressdb.* TO 'admin'@'localhost';"
+mysql -u root -e "FLUSH PRIVILEGES;"
