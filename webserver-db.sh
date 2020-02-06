@@ -13,9 +13,10 @@ cp /wordpress/wp-config-sample.php /wordpress/wp-config.php
 sudo chown -R ubuntu:ubuntu /wordpress /auth.txt
 sed -i '49,56d' /wordpress/wp-config.php
 sed -i '48r auth.txt' /wordpress/wp-config.php
-sed -i 's/database_name_here/wordpressdb/g' /wordpress/wp-config.php
-sed -i 's/username_here/admin/g' /wordpress/wp-config.php
-sed -i 's/password_here/1234567890/g' /wordpress/wp-config.php
+sed -i 's/database_name_here/nama-db/g' /wordpress/wp-config.php
+sed -i 's/username_here/nama-pengguna/g' /wordpress/wp-config.php
+sed -i 's/password_here/katasandi/g' /wordpress/wp-config.php
+sed -i 's/localhost/alamat/g' /wordpress/wp-config.php
 sed -i '38a\define('FS_METHOD', 'direct');' /wordpress/wp-config.php
 sed -i 's/\r$//g' /wordpress/wp-config.php
 cp -a /wordpress /var/www/
@@ -30,7 +31,6 @@ sudo systemctl restart php7.2-fpm
 sudo systemctl restart nginx.service
 
 #configure mysql
-mysql -u root -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY '1234567890';"
-mysql -u root -e "CREATE DATABASE wordpressdb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
-mysql -u root -e "GRANT ALL ON wordpressdb.* TO 'admin'@'localhost';"
-mysql -u root -e "FLUSH PRIVILEGES;"
+mysql -h alamat -u nama-pengguna -p"katasandi" -e "CREATE DATABASE namadb;"
+mysql -h alamat -u nama-pengguna -p"katasandi" -e "GRANT ALL ON namadb.* TO 'nama-pengguna'@'%';"
+mysql -h alamat -u nama-pengguna -p"katasandi" -e "FLUSH PRIVILEGES;"
