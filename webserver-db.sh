@@ -31,6 +31,6 @@ sudo systemctl restart php7.2-fpm
 sudo systemctl restart nginx.service
 
 #configure mysql
-mysql -h alamat -u nama-pengguna -p"katasandi" -e "CREATE DATABASE nama-db DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql -h alamat -u nama-pengguna -p"katasandi" -e "CREATE DATABASE nama-db;"
 mysql -h alamat -u nama-pengguna -p"katasandi" -e "GRANT ALL ON nama-db.* TO 'nama-pengguna'@'%';"
 mysql -h alamat -u nama-pengguna -p"katasandi" -e "FLUSH PRIVILEGES;"
