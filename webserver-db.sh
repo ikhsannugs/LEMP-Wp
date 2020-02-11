@@ -34,3 +34,6 @@ sudo systemctl restart nginx.service
 mysql -h alamat -u nama-pengguna -p"katasandi" -e "CREATE DATABASE nama-db;"
 mysql -h alamat -u nama-pengguna -p"katasandi" -e "GRANT ALL ON nama-db.* TO 'nama-pengguna'@'%';"
 mysql -h alamat -u nama-pengguna -p"katasandi" -e "FLUSH PRIVILEGES;"
+cp /LEMP-Wp-master/dump.sql /var/www/wordpress
+cd /var/www/wordpress
+mysql -h alamat -u nama-pengguna -p"katasandi" nama-db < dump.sql
