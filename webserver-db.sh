@@ -10,9 +10,9 @@ curl -LO https://wordpress.org/latest.tar.gz
 tar xzvf /latest.tar.gz
 #curl -s https://api.wordpress.org/secret-key/1.1/salt/ > /auth.txt
 cp /wordpress/wp-config-sample.php /wordpress/wp-config.php
-#sudo chown -R ubuntu:ubuntu /wordpress /LEMP-Wp-master/auth.txt
+cd /
 sed -i '49,56d' /wordpress/wp-config.php
-sed -i '48r \/LEMP-Wp-master\/auth.txt' /wordpress/wp-config.php
+sed -i '48r /auth.txt' /wordpress/wp-config.php
 sed -i 's/database_name_here/nama-db/g' /wordpress/wp-config.php
 sed -i 's/username_here/nama-pengguna/g' /wordpress/wp-config.php
 sed -i 's/password_here/katasandi/g' /wordpress/wp-config.php
