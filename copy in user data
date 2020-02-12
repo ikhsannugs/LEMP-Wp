@@ -5,7 +5,12 @@ apt-get update
 apt-get install -y unzip
 wget https://codeload.github.com/ikhsannugs/LEMP-Wp/zip/master
 unzip /master
-echo "copy salt authentication here" > 
+touch /auth.txt
+
+cat > /auth.txt <<'EOL'
+-------------change this-------------------
+EOL
+
 sed -i 's/nama-db/wordpressdb/g' /LEMP-Wp-master/webserver-db.sh
 sed -i 's/nama-pengguna/admin/g' /LEMP-Wp-master/webserver-db.sh
 sed -i 's/katasandi/abcd1234567890/g' /LEMP-Wp-master/webserver-db.sh
